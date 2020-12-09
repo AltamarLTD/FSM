@@ -1,0 +1,58 @@
+<header>
+  <div class="header-div-left">
+    <a class="link"
+       href="https://www.google.com/maps/search/вул.+вікентія+хвойки+15%2F15+офіс+3/@50.4831683,30.4701665,14z" target="_blank">
+      <fa-icon [icon]="['fas', 'map-marked-alt']"></fa-icon> вул. Вікентія Хвойки, буд. 15/15</a>
+    <div>
+      <a href="tel: +380990000000" class="link"><fa-icon [icon]="['fas', 'phone']"></fa-icon>+38(099)-000-00-00</a>
+    </div>
+    <a href="mailto: info@gmail.com" class="link"><fa-icon [icon]="['fas', 'envelope']"></fa-icon> info@gmail.com</a>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" routerLink="/" ><img src="./../scss/images/logo1.jpg" class="d-inline-block align-top logo" alt="ALTA MAR"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav w-100 d-flex justify-content-between">
+        <li class="nav-item">
+          <button class="btn btn-outline-light btn-lg common-btn"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                  routerLink="/" ><fa-icon [icon]="['fas', 'home']"></fa-icon> Головна</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-light btn-lg common-btn"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                  routerLink="/import" ><fa-icon [icon]="['fas', 'globe']"></fa-icon> Імпорт</button>
+        </li>
+        <li class="nav-item ">
+          <button class="btn btn-outline-light btn-lg common-btn"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                  routerLink="/shop" ><fa-icon [icon]="['fas', 'fish']"></fa-icon> Магазин</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-light btn-lg common-btn"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                  routerLink="/contacts" ><fa-icon [icon]="['fas', 'user-circle']"></fa-icon> Контакти</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-light btn-lg common-btn"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                  routerLink="/basket"><fa-icon [icon]="['fas', 'shopping-basket']"></fa-icon> Кошик</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div *ngIf="basketService.basketItemsAmount" class="basket" routerLink="/basket">
+    <fa-icon [icon]="['fas', 'shopping-basket']"></fa-icon>
+    <span class="basket-item-amount">{{basketService.basketItemsAmount}}</span>
+  </div>
+
+</header>

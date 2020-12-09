@@ -1,0 +1,23 @@
+<div class="container-fluid mt-5 mb-5 shop">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4 mt-2 p-1" *ngFor="let item of list">
+      <div class="item d-flex text-center justify-content-around flex-column flex-sm-row align-items-center">
+        <img [src]="getImg(item.img)" class="img w-50" [alt]="item.name + ' picture'"
+             [routerLink]="['./shop-item']" [queryParams]="{id: item.id}" />
+        <div class="text">
+          <h3 [routerLink]="['./shop-item']" [queryParams]="{id: item.id}">{{item.name}}</h3>
+          <p>Приблизна вага одної упаковки {{item.pack}}</p>
+          <p>Ціна: {{item.priceKg}}₴/кг</p>
+          <p>Ціна за упаковку: {{item.pricePack}}₴</p>
+          <div class="container-fluid">
+            <div class="add-to-basket row p-2 justify-content-between align-items-center">
+              <button class="btn btn-primary col-12 " (click)="addToBasket(item.id)">Додати в кошик</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

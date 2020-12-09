@@ -1,0 +1,75 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/reboot";
+@import "buttons";
+
+body{
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.main-title{
+  width: 100%;
+  margin: 0;
+  padding: 50px 0;
+
+  &:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 70%;
+    border-radius: 50%/30%;
+    border: 6px solid #e6a80e;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+}
+
+.btn.common-btn {
+  color: white;
+  border:1px solid #e6a80e;
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  transition-duration: 0.3s;
+  transition-property: box-shadow, transform;
+
+  &:before {
+    content: '';
+    position: absolute;
+    border: #e1e1e1 solid 0.5px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    animation-duration: 1s;
+  }
+
+  &:hover, &:focus, &:active {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+  }
+
+  &:hover:before, &:focus:before, &:active:before {
+    animation-name: hvr-ripple-out;
+  }
+}
+
+
+@keyframes hvr-ripple-out {
+  100% {
+    top: -12px;
+    right: -12px;
+    bottom: -12px;
+    left: -12px;
+    opacity: 0;
+  }
+}

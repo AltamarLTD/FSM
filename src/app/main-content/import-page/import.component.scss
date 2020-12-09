@@ -1,0 +1,68 @@
+.subwrapper1{
+  background-image: url(../../../scss/images/америка.jpg);
+  border-radius: 15px;
+  border:#e6a80e double ;
+}
+.subwrapper2{
+  background-image: url(../../../scss/images/stavanuth-1024x575.jpg);
+  width: 100%;
+  border-radius: 15px;
+  border:#e6a80e double ;
+}
+.subwrapper3{
+  background-image: url(../../../scss/images/xmain-2.jp_.jpg);
+  border-radius: 15px;
+  border:#e6a80e double ;
+}
+.subwrapper4{
+  background-image: url(../../../scss/images/Балтийское_море.png);
+  border-radius: 15px;
+  border:#e6a80e double ;
+}
+.subwrapper5{
+  background-image: url(../../../scss/images/ScottD-070401-5515b.jpg);
+  border-radius: 15px;
+
+  border:#e6a80e double ;
+}
+
+.image-animation{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  min-height: 600px;
+  height: 100%;
+  animation: pulsing 5s infinite;
+}
+
+.title{
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  text-shadow: #e6a80e 0 0 4px;
+  color: #fff;
+  font-size: 3em;
+  line-height: 1;
+}
+
+.text-div{
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  color: #7A7B82;
+  line-height: 1.5;
+}
+
+@keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.9, 0.9);
+    transform: scale(0.9, 0.9)
+  }
+  50% {
+    -webkit-transform: scale(1.0, 1.0);
+    transform: scale(1.0, 1.0);
+  }
+  100% {
+    -webkit-transform: scale(0.9, 0.9);
+    transform: scale(0.9, 0.9);
+  }
+}

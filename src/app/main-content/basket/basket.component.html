@@ -1,0 +1,44 @@
+<div class="container-fluid mt-5 mb-5">
+  <div class="row">
+    <div class="col-12 mt-2 p-1 d-flex justify-content-center" *ngFor="let item of basketList">
+      <div class="item w-100 d-flex text-center justify-content-around flex-column flex-sm-row align-items-center">
+        <img [src]="getImg(item.productDTO.img)" class="img w-50" [alt]="item.productDTO.name + ' picture'" />
+        <div class="text mt-2 ml-sm-3 mr-sm-3 mt-sm-0 mb-3">
+          <h3>{{item.productDTO.name}}</h3>
+          <p>{{item.productDTO.priceKg}} ₴/кг</p>
+          <p>В наявності {{item.amount}} кг</p>
+          <p>Упаковка: {{item.productDTO.pack}}</p>
+          <p>Ціна за упаковку: {{item.productDTO.pricePack}} ₴</p>
+          <p>Дата вилову: {{item.productDTO.date}}</p>
+          <div class="d-flex mt-3 align-items-center">
+            <input class="form-control text-center" type="number" value="1" min="1" [(ngModel)]="item.quantity" (ngModelChange)="item.dirty = true">
+            <span  *ngIf="item.dirty" class="update-quantity ml-3" (click)="updateQuantity(item)">↻</span>
+          </div>
+          <button class="btn btn-danger col-12 mt-4" (click)="removeItem(item.productDTO.id)">Прибрати з кошика</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5 mb-5" *ngIf="basketList.length">
+    <div class="col-12 d-flex justify-content-center price mb-3">
+     Ціна замовлення: {{totalPrice}} ₴
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <button class="btn btn-primary btn-checkout" routerLink="/checkout" >Оформити замовлення</button>
+    </div>
+    <div class="col-12 d-flex justify-content-center mt-3">
+      <button class="btn btn-danger btn-remove-all" (click)="removeAll()">Очистити кошик</button>
+    </div>
+
+  </div>
+
+
+
+  <div class="row basket-empty" *ngIf="!basketList.length">
+    <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+      <div>Кошик ще порожній =(</div>
+      <div class="buy-tooltip mt-2">(Перейдіть в магазин та оберіть товари)</div>
+    </div>
+  </div>
+</div>
