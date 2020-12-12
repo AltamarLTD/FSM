@@ -6,4 +6,4 @@ RUN npm install
 COPY . /fsm
 RUN npm run build --prod
 FROM nginx:1.17.1-alpine
-COPY --from=build-step /fsm/dist/FSM /usr/share/nginx/html
+COPY --from=build-step /fsm/dist/fish-shop /usr/share/nginx/html

@@ -5,56 +5,111 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Им'я</span>
         </div>
-        <input type="text" [(ngModel)]="user.name" class="form-control" placeholder="Джон" required>
+        <input type="text" [(ngModel)]="user.name" class="form-control" placeholder="Джон"
+               name="name" #name="ngModel"  minlength="2" maxlength="20" required>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="name.errors.required">
+            Вкажіть ім'я
+          </div>
+          <div *ngIf="name.errors.minlength || name.errors.maxlength">
+            Ім'я має бути від 2 до 20 символів
+          </div>
+        </div>
       </div>
 
-      <div class="input-group mb-3">
+      <div class="input-group mb-3" [class.error-offset]="surname.invalid && (surname.dirty || surname.touched)">
         <div class="input-group-prepend">
           <span class="input-group-text">Прізвище</span>
         </div>
-        <input type="text" [(ngModel)]="user.surname" class="form-control" placeholder="Доу" required>
+        <input type="text" [(ngModel)]="user.surname" class="form-control" placeholder="Доу"
+               #surname="ngModel"  minlength="2" maxlength="20" required>
+        <div *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="surname.errors.required">
+            Вкажіть прізвище
+          </div>
+          <div *ngIf="surname.errors.minlength || surname.errors.maxlength">
+            Прізвище має бути від 2 до 20 символів
+          </div>
+        </div>
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Компанія</span>
         </div>
-        <input type="text" [(ngModel)]="user.company" class="form-control" placeholder="Альтамар" required>
+        <input type="text" [(ngModel)]="user.company" class="form-control">
       </div>
 
-      <div class="input-group mb-3">
+      <div class="input-group mb-3" [class.error-offset]="country.invalid && (country.dirty || country.touched)">
         <div class="input-group-prepend">
           <span class="input-group-text">Країна</span>
         </div>
-        <input type="text" [(ngModel)]="user.country" class="form-control" placeholder="Україна" required>
+        <input type="text" [(ngModel)]="user.country" class="form-control" placeholder="Україна"
+               #country="ngModel"  minlength="2" maxlength="20" required>
+        <div *ngIf="country.invalid && (country.dirty || country.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="country.errors.required">
+            Вкажіть країну
+          </div>
+          <div *ngIf="country.errors.minlength || country.errors.maxlength">
+            Назва має бути від 2 до 20 символів
+          </div>
+        </div>
       </div>
 
-      <div class="input-group mb-3">
+      <div class="input-group mb-3" [class.error-offset]="region.invalid && (region.dirty || region.touched)">
         <div class="input-group-prepend">
           <span class="input-group-text">Область</span>
         </div>
-        <input type="text" [(ngModel)]="user.region" class="form-control" placeholder="Київська обл." required>
+        <input type="text" [(ngModel)]="user.region" class="form-control" placeholder="Київська обл."
+               #region="ngModel"  minlength="2" maxlength="20" required>
+        <div *ngIf="region.invalid && (region.dirty || region.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="region.errors.required">
+            Вкажіть область
+          </div>
+          <div *ngIf="region.errors.minlength || region.errors.maxlength">
+            Назва має бути від 2 до 20 символів
+          </div>
+        </div>
       </div>
 
-      <div class="input-group mb-3">
+      <div class="input-group mb-3" [class.error-offset]="city.invalid && (city.dirty || city.touched)">
         <div class="input-group-prepend">
           <span class="input-group-text">Місто</span>
         </div>
-        <input type="text" [(ngModel)]="user.city" class="form-control" placeholder="Київ" required>
+        <input type="text" [(ngModel)]="user.city" class="form-control" placeholder="Київ"
+               #city="ngModel"  minlength="2" maxlength="20" required>
+        <div *ngIf="city.invalid && (city.dirty || city.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="city.errors.required">
+            Вкажіть місто
+          </div>
+          <div *ngIf="city.errors.minlength || city.errors.maxlength">
+            Місто має бути від 2 до 20 символів
+          </div>
+        </div>
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Телефон</span>
         </div>
-        <input type="tel" [(ngModel)]="user.phone" class="form-control" placeholder="+380000000000" required  attern="[\+]\d{12}">
+        <input type="tel" [(ngModel)]="user.phone" class="form-control" placeholder="+380000000000" required  attern="[\+]\d{12}" #phone="ngModel">
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">E-mail</span>
         </div>
-        <input type="email" [(ngModel)]="user.email" class="form-control" placeholder="example@gmail.com" required>
+        <input type="email" [(ngModel)]="user.email" class="form-control" placeholder="example@gmail.com" #email="ngModel" required>
       </div>
     </div>
   </div>
@@ -76,7 +131,15 @@
 
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
-      <button class="btn btn-primary" (click)="confirmOrder()">Підтвердити замовлення</button>
+      <button class="btn btn-primary"
+              [class.disabled]='name.invalid ||
+            surname.invalid ||
+            country.invalid ||
+            region.invalid ||
+            city.invalid ||
+            phone.invalid ||
+            email.invalid'
+              (click)="confirmOrder()">Підтвердити замовлення</button>
     </div>
     <div *ngIf="errorStatus" class="col-12 text-danger d-flex justify-content-center">
       Error: {{errorStatus}}

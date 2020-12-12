@@ -12,6 +12,18 @@
       color: #a7a7a7;
     }
   }
+
+  .alert{
+    position: absolute;
+    transform: translate(-50%, -88%);
+    left: 50%;
+    width: max-content;
+    z-index: 10;
+  }
+
+  .error-offset{
+    margin-top: 52px;
+  }
 }
 
 .order{
@@ -58,4 +70,9 @@
     align-items: center;
     margin: auto;
   }
+}
+
+.disabled{
+  opacity: 0.5;
+  pointer-events: none;
 }

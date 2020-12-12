@@ -20,7 +20,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     date: string;
     id: number;
     sum: number;
-    invoiceProductsDto: Product[]
+    invoiceProductsDto: {  quantity: number; productDTO: Product}[];
+    invoiceStatusDTO: {status: string};
   } = null;
   user: Client = {
     name: null,
@@ -46,6 +47,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         cart: {sum: number, cartItems: CartItem[]}
       }
     }) => {
+      console.log(res)
       this.order = res.result.cart;
       if (res.result.user) {
         this.user = res.result.user;
@@ -57,6 +59,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.errorStatus = null;
     this.http.confirmOrder(this.user).pipe(catchError(this.handleError.bind(this)), take(1), untilDestroyed(this)).subscribe((res: any) => {
       if (res.code === ResponseCode.Success) {
+        console.log(res)
         this.orderInWork = res.result;
         this.basket.clear();
         // init cart again
